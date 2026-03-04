@@ -1,16 +1,125 @@
-# React + Vite
+# Recipe Hub
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, responsive recipe management app built with React, Vite, and Tailwind CSS.
 
-Currently, two official plugins are available:
+Users can create recipes, browse all recipes, update/delete them, mark favorites, and manage everything with a clean UI/UX.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## React Compiler
+- Responsive pages for Home, Recipes, Recipe Details, Create, Favorites, and About
+- Recipe CRUD flow:
+	- Create a recipe
+	- View all recipes
+	- Open recipe details
+	- Update or delete a recipe
+- Favorites support using localStorage
+- Dynamic stats and featured sections on homepage
+- Reusable app shell with Navbar and Footer
+- Toast notifications for key actions
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Tech Stack
 
-## Expanding the ESLint configuration
+- React 19
+- Vite 7
+- React Router DOM 7
+- Tailwind CSS 4
+- React Hook Form
+- React Toastify
+- Nano ID
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Project Structure
+
+```text
+src/
+	components/
+		Navbar.jsx
+		Footer.jsx
+		RecipeCard.jsx
+	context/
+		Recipecontext.jsx
+	pages/
+		Home.jsx
+		Recipes.jsx
+		RecipeDetail.jsx
+		Create.jsx
+		Fav.jsx
+		About.jsx
+		PageNotFound.jsx
+	routes/
+		Mainroutes.jsx
+	App.jsx
+	main.jsx
+```
+
+## Routes
+
+- `/` → Home
+- `/recipes` → All recipes
+- `/recipe/details/:id` → Recipe detail/edit page
+- `/create-recipe` → Create recipe form
+- `/fav` → Favorite recipes
+- `/about` → About page
+- `*` → Not found page
+
+## Local Data Storage
+
+The app uses browser `localStorage`:
+
+- `recipes` → array of recipe objects
+- `fav` → array of favorite recipe IDs
+
+No backend is required.
+
+## Getting Started
+
+### 1) Install dependencies
+
+```bash
+npm install
+```
+
+### 2) Run development server
+
+```bash
+npm run dev
+```
+
+### 3) Build for production
+
+```bash
+npm run build
+```
+
+### 4) Preview production build
+
+```bash
+npm run preview
+```
+
+### 5) Run lint
+
+```bash
+npm run lint
+```
+
+## Recipe Object Shape
+
+```js
+{
+	id: string,
+	image: string,
+	title: string,
+	ingredients: string,
+	instructions: string,
+	category: "breakfast" | "lunch" | "dinner"
+}
+```
+
+## Notes
+
+- Data persists per browser/device through localStorage.
+- If you clear browser storage, recipes and favorites will reset.
+
+## License
+
+This project is for learning and portfolio use.
